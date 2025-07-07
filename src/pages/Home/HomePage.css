@@ -1,0 +1,145 @@
+/* Estilos para HomePage */
+.home-page {
+  width: 100%;
+  padding: 24px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+}
+
+.home-page h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #2c3e50;
+  font-size: 2.5rem;
+}
+
+.posts-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
+.post-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.post-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.post-title {
+  margin: 0 0 0.5rem 0;
+  color: #3a3a5a;
+  font-size: 1.6rem;
+}
+
+.post-title a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s;
+}
+
+.post-title a:hover {
+  color: #3498db;
+}
+
+.post-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  color: #666;
+}
+
+.post-preview {
+  color: #444;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+.read-more {
+  align-self: flex-start;
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+  font-size: 1.1rem;
+  padding: 0.5rem 0;
+}
+
+.read-more:hover {
+  color: #22223b;
+  text-decoration: underline;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-primary {
+  background: #4f8cff;
+  color: #fff;
+  border: none;
+}
+
+.btn-primary:hover {
+  background: #22223b;
+  color: #fff;
+}
+
+.loading, .error, .no-posts {
+  text-align: center;
+  margin: 40px 0;
+  font-size: 1.2rem;
+}
+
+.error {
+  color: #d90429;
+}
+
+.no-posts {
+  padding: 3rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.no-posts p {
+  margin-bottom: 1rem;
+  color: #666;
+}
+
+@media (max-width: 480px) {
+  .home-page {
+    padding: 16px;
+  }
+
+  .post-card {
+    padding: 1.5rem;
+  }
+
+  .post-title {
+    font-size: 1.4rem;
+  }
+
+  .post-preview {
+    font-size: 1rem;
+  }
+}

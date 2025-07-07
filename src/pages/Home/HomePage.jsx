@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import './HomePage.css'
 
 const HomePage = () => {
   const [posts, setPosts] = useState([])
@@ -36,7 +37,6 @@ const HomePage = () => {
 
   return (
     <div className="home-page">
-      <h1>Blog Personal</h1>
       {posts.length === 0 ? (
         <div className="no-posts">
           <p>No hay posts publicados aún.</p>

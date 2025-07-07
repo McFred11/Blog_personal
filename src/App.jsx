@@ -1,8 +1,9 @@
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
-import HomePage from './pages/HomePage'
-import CreatePost from './pages/CreatePost.jsx'
-import PostDetail from './pages/PostDetail'
+import Footer from './components/Footer.jsx'
+import HomePage from './pages/Home/HomePage'
+import CreatePost from './pages/Crear/CreatePost.jsx'
+import PostDetail from './pages/Posts/PostDetail'
 import './App.css'
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route path="/post/:id" element={<PostDetail />} />
         </Routes>
       </main>
+      <Footer />
     </div>
   )
 }
