@@ -5,7 +5,7 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="nav-container">
         <Link to="/" className="nav-logo">
-          Mi Blog Personal
+          Mi Blog
         </Link>
         <div className="nav-links">
           <Link to="/" className="nav-link">

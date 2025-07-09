@@ -35,39 +35,68 @@ const HomePage = () => {
   if (loading) return <div className="loading">Cargando posts...</div>
   if (error) return <div className="error">{error}</div>
 
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <div className="home-page">
-      {posts.length === 0 ? (
-        <div className="no-posts">
-          <p>No hay posts publicados aún.</p>
-          <Link to="/create" className="btn btn-primary">
-            Crear tu primer post
-          </Link>
+    <>
+      <section id="inicio" className="hero-section">
+        <div className="hero-container">
+          <div className="hero-image-container">
+            <span className="hero-emoji">👋</span>
+          </div>
+          <h1 className="hero-title">¡Hola, soy María!</h1>
+          <p className="hero-description">Bienvenido a mi espacio personal donde comparto mis pensamientos, experiencias y pasiones sobre tecnología, viajes y vida.</p>
+          <button onClick={() => scrollToSection('blog')} className="hero-button">
+            Explorar Blog
+          </button>
         </div>
-      ) : (
-        <div className="posts-grid">
-          {posts.map(post => (
-            <article key={post._id} className="post-card">
-              <h2 className="post-title">
-                <Link to={`/post/${post._id}`}>
-                  {post.titulo}
-                </Link>
-              </h2>
-              <div className="post-meta">
-                <span className="post-author">Por {post.autor}</span>
-                <span className="post-date">{formatDate(post.fecha)}</span>
-              </div>
-              <p className="post-preview">
-                {post.contenido.substring(0, 150)}...
-              </p>
-              <Link to={`/post/${post._id}`} className="read-more">
-                Leer más
+      </section>
+      <section id="blog" className="blog-section">
+        <div className="container">
+          <h2 className="section-title">Últimas Publicaciones</h2>
+          {posts.length === 0 ? (
+            <div className="no-posts">
+              <p>No hay posts publicados aún.</p>
+              <Link to="/create" className="btn btn-primary">
+                Crear tu primer post
               </Link>
-            </article>
-          ))}
+            </div>
+          ) : (
+            <div className="blog-grid">
+              {posts.map(post => (
+                <article key={post._id} className="blog-card">
+                  <div className="card-image-container bg-gradient-blue-purple">
+                    <span className="card-image-emoji">🚀</span>
+                  </div>
+                  <div className="card-content">
+                    <div className="card-meta">
+                      <span className="card-category">Tecnología</span>
+                      <span className="card-date">{formatDate(post.fecha)}</span>
+                    </div>
+                    <h3 className="card-title">
+                      <Link to={`/post/${post._id}`}>
+                        {post.titulo}
+                      </Link>
+                    </h3>
+                    <p className="card-preview-text">
+                      {post.contenido.substring(0, 150)}...
+                    </p>
+                    <Link to={`/post/${post._id}`} className="card-read-more">
+                      Leer más →
+                    </Link>
+                  </div>
+                </article>
+              ))}
+            </div>
+          )}
         </div>
-      )}
-    </div>
+      </section>
+    </>
   )
 }
 
