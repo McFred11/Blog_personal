@@ -29,7 +29,7 @@ const PostDetail = () => {
     if (window.confirm('¿Estás seguro de que quieres eliminar este post?')) {
       try {
         await axios.delete(`/api/posts/${id}`)
-        navigate('/')
+        navigate('/Blog')
       } catch (err) {
         setError('Error al eliminar el post')
       }
