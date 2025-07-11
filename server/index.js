@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import nodemailer from 'nodemailer';
 
 dotenv.config();
 
@@ -121,4 +122,48 @@ app.delete('/api/posts/:id', async (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en puerto ${PORT}`);
+});
+
+// Endpoint para el formulario de contacto
+app.post('/api/contact', async (req, res) => {
+  const { name, email, subject, message } = req.body;
+
+  // 1. Configura el transportador de Nodemailer
+  // Usa tus credenciales de email del archivo .env
+  let transporter = nodemailer.createTransport({
+    service: 'gmail', // o 'outlook', 'hotmail', etc., dependiendo de tu proveedor
+    auth: {
+      user: process.env.EMAIL_USER, // Tu correo electrónico (ej. mi.correo@gmail.com)
+      pass: process.env.EMAIL_PASS, // Tu contraseña de aplicación o contraseña de email
+    },
+  });
+
+  // 2. Define las opciones del correo a enviar
+  let mailOptions = {
+    from: process.env.EMAIL_USER, // El remitente del correo (tu propio email)
+    to: 'tu_correo_destino@example.com', // **¡IMPORTANTE! Reemplaza esto con el correo al que quieres recibir los mensajes**
+    subject: `Mensaje de Contacto de ${name}: ${subject}`,
+    html: `
+      <p>Has recibido un nuevo mensaje desde tu formulario de contacto:</p>
+      <p><strong>Nombre:</strong> ${name}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Asunto:</strong> ${subject}</p>
+      <p><strong>Mensaje:</strong></p>
+      <p>${message}</p>
+    `,
+  };
+
+  // 3. Envía el correo
+  try {
+    await transporter.sendMail(mailOptions);
+    console.log('Correo enviado con éxito!');
+    res.status(200).json({ message: '¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.' });
+  } catch (error) {
+    console.error('Error al enviar el correo:', error);
+    res.status(500).json({ message: 'Error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde.' });
+  }
+});
+
+app.listen(PORT, () => {
+  console.log(`Servidor de correo corriendo en http://localhost:${PORT}`);
 });
