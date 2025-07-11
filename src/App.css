@@ -9,6 +9,7 @@
 body {
   min-height: 100vh;
   background-color: #f5f6fa; /* Mantener este color si es el deseado */
+  color: #333; /* Color de texto por defecto */
 }
 
 .App {
@@ -99,7 +100,7 @@ body {
 .footer {
   background-color: #705fbe;
   color: white;
-  padding: 3rem 0;
+  padding: 1rem;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -111,38 +112,13 @@ body {
   max-width: 1200px;
   display: flex;
   flex-direction: column;
+  text-align: center;
   gap: 2rem;
 }
 
-.footer-links {
-  display: flex;
-  gap: 3rem;
-  flex-wrap: wrap;
-  width: 100%;
-}
-
-.footer-link {
-  color: white;
-  text-decoration: none;
-  transition: color 0.3s ease;
-  font-size: 1.2rem;
-}
-
-.footer-link:hover {
-  color: #3498db;
-}
-
-.footer-social {
-  display: flex;
-  gap: 2.5rem;
-  margin-top: 2rem;
-  width: 100%;
-}
-
 .copyright {
-  margin-top: 2rem;
   font-size: 1.1rem;
-  color: #bdc3c7;
+  color: #fff;
   width: 100%;
 }
 

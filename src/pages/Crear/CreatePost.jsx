@@ -1,41 +1,42 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
-import './CreatePost.css'
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import './CreatePost.css'; // Asegúrate de crear este archivo CSS si no existe
 
 const CreatePost = () => {
-  const [formData, setFormData] = useState({
-    titulo: '',
-    contenido: '',
-    autor: ''
-  })
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
-  const navigate = useNavigate()
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
-  }
+  const [titulo, setTitulo] = useState('');
+  const [contenido, setContenido] = useState('');
+  const [autor, setAutor] = useState('');
+  const [categoria, setCategoria] = useState(''); // Nuevo estado para la categoría
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setLoading(true)
-    setError(null)
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+
+    // Validar que se haya seleccionado una categoría
+    if (!categoria) {
+      setError('Por favor, selecciona una categoría.');
+      setLoading(false);
+      return;
+    }
 
     try {
-      await axios.post('/api/posts', formData)
-      navigate('/')
+      await axios.post('/api/posts', { titulo, contenido, autor, categoria }); // Envía la categoría
+      navigate('/'); // Redirige a la página principal después de crear
     } catch (err) {
-      setError('Error al crear el post')
-      setLoading(false)
+      setError('Error al crear el post. Por favor, intenta de nuevo.');
+      console.error('Error al crear el post:', err);
+    } finally {
+      setLoading(false);
     }
-  }
+  };
 
   return (
-    <div className="create-post-page">
+    <div className="create-post-container">
       <h1>Crear Nuevo Post</h1>
       <form onSubmit={handleSubmit} className="create-post-form">
         <div className="form-group">
@@ -43,24 +44,9 @@ const CreatePost = () => {
           <input
             type="text"
             id="titulo"
-            name="titulo"
-            value={formData.titulo}
-            onChange={handleChange}
+            value={titulo}
+            onChange={(e) => setTitulo(e.target.value)}
             required
-            placeholder="Ingresa el título del post"
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="autor">Autor:</label>
-          <input
-            type="text"
-            id="autor"
-            name="autor"
-            value={formData.autor}
-            onChange={handleChange}
-            required
-            placeholder="Tu nombre"
           />
         </div>
 
@@ -68,36 +54,46 @@ const CreatePost = () => {
           <label htmlFor="contenido">Contenido:</label>
           <textarea
             id="contenido"
-            name="contenido"
-            value={formData.contenido}
-            onChange={handleChange}
+            value={contenido}
+            onChange={(e) => setContenido(e.target.value)}
             required
-            placeholder="Escribe el contenido de tu post aquí..."
-            rows="10"
+          ></textarea>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="autor">Autor:</label>
+          <input
+            type="text"
+            id="autor"
+            value={autor}
+            onChange={(e) => setAutor(e.target.value)}
+            required
           />
         </div>
 
-        {error && <div className="error">{error}</div>}
-
-        <div className="form-actions">
-          <button 
-            type="submit" 
-            className="btn btn-primary"
-            disabled={loading}
+        {/* NUEVO: Selector de Categoría */}
+        <div className="form-group">
+          <label htmlFor="categoria">Categoría:</label>
+          <select
+            id="categoria"
+            value={categoria}
+            onChange={(e) => setCategoria(e.target.value)}
+            required // Haciendo la selección de categoría obligatoria
           >
-            {loading ? 'Publicando...' : 'Publicar Post'}
-          </button>
-          <button 
-            type="button" 
-            className="btn btn-secondary"
-            onClick={() => navigate('/')}
-          >
-            Cancelar
-          </button>
+            <option value="">Selecciona una categoría</option> {/* Opción por defecto */}
+            <option value="Tecnología">Tecnología</option>
+            <option value="Viajes">Viajes</option>
+          </select>
         </div>
+
+        {error && <p className="error-message">{error}</p>}
+
+        <button type="submit" disabled={loading}>
+          {loading ? 'Creando...' : 'Crear Post'}
+        </button>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default CreatePost
+export default CreatePost;

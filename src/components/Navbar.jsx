@@ -11,8 +11,14 @@ const Navbar = () => {
           <Link to="/" className="nav-link">
             Inicio
           </Link>
-          <Link to="/create" className="nav-link">
-            Crear Post
+          <Link to="/Sobremi" className="nav-link">
+            Sobre Mi
+          </Link>
+          <Link to="/Blog" className="nav-link">
+            Blog
+          </Link>
+          <Link to="/Contacto" className="nav-link">
+            Contacto
           </Link>
         </div>
       </div>

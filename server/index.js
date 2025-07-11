@@ -36,6 +36,11 @@ const postSchema = new mongoose.Schema({
   fecha: {
     type: Date,
     default: Date.now
+  },
+  categoria: {
+    type: String,
+    required: true,
+    enum: ['Tecnología', 'Viajes'] // Valores permitidos
   }
 });
 
@@ -69,11 +74,12 @@ app.get('/api/posts/:id', async (req, res) => {
 // Crear un nuevo post
 app.post('/api/posts', async (req, res) => {
   try {
-    const { titulo, contenido, autor } = req.body;
+    const { titulo, contenido, autor, categoria } = req.body;
     const nuevoPost = new Post({
       titulo,
       contenido,
-      autor
+      autor,
+      categoria
     });
     const postGuardado = await nuevoPost.save();
     res.status(201).json(postGuardado);
@@ -85,10 +91,10 @@ app.post('/api/posts', async (req, res) => {
 // Actualizar un post
 app.put('/api/posts/:id', async (req, res) => {
   try {
-    const { titulo, contenido, autor } = req.body;
+    const { titulo, contenido, autor, categoria } = req.body;
     const post = await Post.findByIdAndUpdate(
       req.params.id,
-      { titulo, contenido, autor },
+      { titulo, contenido, autor, categoria },
       { new: true, runValidators: true }
     );
     if (!post) {

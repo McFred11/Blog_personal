@@ -1,0 +1,116 @@
+/* Estilos generales de la sección Sobre Mí */
+.sobre-mi-section {
+  padding: 80px 0; /* py-20 */
+  background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+  width: 100%;
+  height: 90vh;
+  display: flex; /* Habilita Flexbox */
+  align-items: center; /* Centra los ítems hijos verticalmente */
+  justify-content: center;
+}
+
+.sobre-mi-container {
+  max-width: 1200px; /* container mx-auto */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px; /* px-6 */
+  padding-right: 24px; /* px-6 */
+}
+
+.sobre-mi-content {
+  max-width: 800px; /* max-w-4xl */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Título de la sección */
+.sobre-mi-title {
+  font-size: 4rem; /* text-4xl (ajustado para ser un poco más grande que el h2 normal, pero sin llegar a hero-title) */
+  font-weight: bold; /* font-bold */
+  text-align: center; /* text-center */
+  margin-bottom: 48px; /* mb-12 */
+  color: #fff; /* text-gray-800 */
+}
+
+/* Grid de contenido (imagen + texto) */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Por defecto una columna en móvil */
+  gap: 48px; /* gap-12 */
+  align-items: center; /* items-center */
+}
+
+@media (min-width: 768px) { /* md:grid-cols-2 */
+  .about-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Contenedor de la imagen/emoji */
+.about-image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-image {
+  width: 256px; /* w-64 */
+  height: 256px; /* h-64 */
+  margin-left: auto; /* mx-auto */
+  margin-right: auto; /* mx-auto */
+  background: linear-gradient(135deg, #a78bfa 0%, #f472b6 100%); /* bg-gradient-to-br from-purple-400 to-pink-400 */
+  border-radius: 9999px; /* rounded-full */
+  display: flex; /* flex */
+  align-items: center; /* items-center */
+  justify-content: center; /* justify-center */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Sombra suave */
+}
+
+.about-image-emoji {
+  font-size: 6rem; /* text-8xl (ajustado para que quepa bien) */
+  /* El color del emoji se hereda, o puedes ponerlo blanco si el fondo lo requiere */
+}
+
+/* Contenido de texto */
+.about-text-content {
+  /* blog-content de tu estructura, que en realidad es el área de texto */
+}
+
+.about-paragraph {
+  font-size: 1.25rem; /* text-lg */
+  color: #fff; /* text-gray-600 */
+  margin-bottom: 24px; /* mb-6 */
+  line-height: 1.75; /* Añade un poco de interlineado para mejor lectura */
+}
+
+/* Contenedor de las etiquetas/habilidades */
+.about-tags-container {
+  display: flex; /* flex */
+  flex-wrap: wrap; /* flex-wrap */
+  gap: 12px; /* gap-3 */
+  margin-top: 24px; /* Margen superior para separarlo de los párrafos */
+}
+
+.about-tag {
+  padding: 8px 15px; /* px-3 py-1 */
+  border-radius: 9999px; /* rounded-full */
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 500; /* Puedes ajustar el peso de la fuente */
+  white-space: nowrap; /* Evita que las etiquetas se rompan */
+}
+
+/* Colores específicos para las etiquetas */
+.tag-technology {
+  background-color: #ede9fe; /* bg-purple-100 */
+  color: #6d28d9; /* text-purple-800 */
+}
+
+.tag-travel {
+  background-color: #fce7f3; /* bg-pink-100 */
+  color: #be185d; /* text-pink-800 */
+}
+
+/* Asegura un padding superior consistente para el contenido principal si el navbar es fijo */
+.main-content {
+    padding-top: 70px; /* Ya lo tienes en App.css, solo como recordatorio */
+}

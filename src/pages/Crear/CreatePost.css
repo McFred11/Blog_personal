@@ -1,112 +1,87 @@
-.create-post-page {
-  width: 100%;
-  padding: 24px;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+.create-post-container {
+  max-width: 700px;
+  margin: 40px auto; /* Ajusta el margen superior e inferior */
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.create-post-page h1 {
+.create-post-container h1 {
   text-align: center;
-  margin-bottom: 2rem;
-  color: #2c3e50;
-  font-size: 2.5rem;
-}
-
-.create-post-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-}
-
-.form-group label {
-  margin-bottom: 0.5rem;
-  font-weight: 600;
   color: #333;
+  margin-bottom: 30px;
+  font-size: 2.2rem;
+  font-weight: 700;
 }
 
-.form-group input,
-.form-group textarea {
+.create-post-form .form-group {
+  margin-bottom: 20px;
+}
+
+.create-post-form label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.create-post-form input[type="text"],
+.create-post-form textarea,
+.create-post-form select { /* Añadido el estilo para el select */
+  width: 100%;
   padding: 12px;
   border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 1rem;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.form-group textarea {
-  resize: vertical;
-  min-height: 120px;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: #4f8cff;
-  box-shadow: 0 0 0 3px rgba(79, 140, 255, 0.2);
-}
-
-.form-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.btn {
-  display: inline-block;
-  padding: 10px 22px;
   border-radius: 6px;
   font-size: 1rem;
-  font-weight: 500;
-  text-decoration: none;
+  box-sizing: border-box;
+  background-color: #f8f8f8;
+  color: #444;
+}
+
+.create-post-form textarea {
+  min-height: 150px;
+  resize: vertical; /* Permite redimensionar verticalmente */
+}
+
+.create-post-form input[type="text"]:focus,
+.create-post-form textarea:focus,
+.create-post-form select:focus { /* Añadido el estilo para el select en foco */
+  border-color: #6a11cb;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.2);
+}
+
+.create-post-form button {
+  display: block;
+  width: 100%;
+  padding: 14px 20px;
+  background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+  margin-top: 25px;
 }
 
-.btn-primary {
-  background: #4f8cff;
-  color: #fff;
-  border: none;
+.create-post-form button:disabled {
+  background: linear-gradient(to right, #a0a0a0 0%, #b0b0b0 100%);
+  cursor: not-allowed;
+  opacity: 0.8;
 }
 
-.btn-primary:hover {
-  background: #22223b;
-  color: #fff;
+.create-post-form button:not(:disabled):hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
 }
 
-.btn-secondary {
-  background: #6c757d;
-  color: #fff;
-  border: none;
-}
-
-.btn-secondary:hover {
-  background: #5a6268;
-}
-
-.error {
+.error-message {
   color: #d90429;
   text-align: center;
-  margin-top: 1rem;
-}
-
-@media (max-width: 480px) {
-  .create-post-page {
-    padding: 16px;
-  }
-
-  .form-actions {
-    flex-direction: column;
-  }
-
-  .btn {
-    width: 100%;
-  }
+  margin-top: 15px;
+  font-size: 0.95rem;
 }
