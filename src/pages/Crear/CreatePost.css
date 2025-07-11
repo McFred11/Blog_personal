@@ -25,9 +25,11 @@
 .create-post-container h1 {
   text-align: center;
   color: #fff;
+  color: #fff;
   margin-bottom: 30px;
   font-size: 2.2rem;
   font-weight: 700;
+  letter-spacing: 1px;
   letter-spacing: 1px;
 }
 
@@ -39,6 +41,7 @@
   display: block;
   margin-bottom: 8px;
   color: #e0e0e0;
+  color: #e0e0e0;
   font-weight: 600;
   font-size: 1.1rem;
 }
@@ -46,8 +49,11 @@
 .create-post-form input[type="text"],
 .create-post-form textarea,
 .create-post-form select {
+.create-post-form select {
   width: 100%;
   padding: 12px;
+  border: none;
+  border-radius: 8px;
   border: none;
   border-radius: 8px;
   font-size: 1rem;
@@ -55,10 +61,13 @@
   background-color: #f8f8f8;
   color: #222;
   margin-bottom: 10px;
+  color: #222;
+  margin-bottom: 10px;
 }
 
 .create-post-form textarea {
   min-height: 150px;
+  resize: vertical;
   resize: vertical;
 }
 
@@ -66,7 +75,10 @@
 .create-post-form textarea:focus,
 .create-post-form select:focus {
   border: 2px solid #6a11cb;
+.create-post-form select:focus {
+  border: 2px solid #6a11cb;
   outline: none;
+  box-shadow: 0 0 0 2px rgba(106, 17, 203, 0.15);
   box-shadow: 0 0 0 2px rgba(106, 17, 203, 0.15);
 }
 
@@ -75,12 +87,18 @@
   width: 100%;
   padding: 14px 20px;
   background: linear-gradient(to right, #ac3145 0%, #00087c 100%); /* Gradiente similar a otros botones del sitio */
+  background: linear-gradient(to right, #ac3145 0%, #00087c 100%); /* Gradiente similar a otros botones del sitio */
   color: white;
   border: none;
   border-radius: 8px;
   font-size: 1.1rem;
   font-weight: 700;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
   cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  margin-top: 20px;
   transition: background 0.3s, transform 0.2s;
   margin-top: 20px;
 }
@@ -95,9 +113,16 @@
   background: linear-gradient(to right, #2575fc 0%, #6a11cb 100%);
   opacity: 0.95;
   transform: translateY(-2px) scale(1.03);
+  background: linear-gradient(to right, #2575fc 0%, #6a11cb 100%);
+  opacity: 0.95;
+  transform: translateY(-2px) scale(1.03);
 }
 
 .error-message {
+  color: #ffd6e0;
+  background: rgba(217, 4, 41, 0.1);
+  border-radius: 6px;
+  padding: 8px 0;
   color: #ffd6e0;
   background: rgba(217, 4, 41, 0.1);
   border-radius: 6px;

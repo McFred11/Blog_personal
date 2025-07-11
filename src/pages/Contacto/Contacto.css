@@ -127,18 +127,21 @@
 .contact-form input[type="email"],
 .contact-form textarea {
   width: 100%;
-  padding: 0.75rem 1rem;
-  border: 1px solid #d1d5db; /* Gris claro para el borde */
-  border-radius: 0.5rem;
-  box-sizing: border-box; /* Asegura que padding no aumente el ancho total */
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  background-color: #f8f8f8;
+  color: #444;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
   outline: none;
-  border-color: #8b5cf6; /* Púrpura de foco */
-  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2); /* Sombra de foco púrpura */
+  border-color: #6a11cb;
+  box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.2);
 }
 
 .contact-form textarea {

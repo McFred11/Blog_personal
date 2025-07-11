@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './CreatePost.css';
+import './CreatePost.css';
 
 const CreatePost = () => {
   const [titulo, setTitulo] = useState('');
@@ -10,6 +11,8 @@ const CreatePost = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+
+  const autor = "Maria Blogs"; // Autor fijo
 
   const autor = "Maria Blogs"; // Autor fijo
 
